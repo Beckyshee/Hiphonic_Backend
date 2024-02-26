@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "Username": "nyambuu",
-    "Email" : "leahnyambura682@gmail.com",
+    "Email" : "leambura682@gmail.com",
     "Password" : "12345678",
     "TagName": "@kanyambu_kamama",
     "Location" : "Nyandarua,Kenya"
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 {
    
-    "Email" : "leahnyambura682@gmail.com",
+    "Email" : "leambura682@gmail.com",
     "Password" : "12345678"
     
 }

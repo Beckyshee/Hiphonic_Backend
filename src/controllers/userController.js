@@ -22,7 +22,7 @@ import {
   // notAuthorized,
 } from "../helper/helperFunction.js";
 import jwt from "jsonwebtoken";
-import joi from 'joi';
+// import joi from 'joi';
 import { verifyToken } from "../middleware/verifyToken.js";
 
 import nodemailer from "nodemailer";

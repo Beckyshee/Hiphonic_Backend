@@ -2,19 +2,19 @@ import express from "express";
 import dotenv from "dotenv";
 import logger from "./src/utils/logger.js";
 import userRouter from "./src/routes/userRoutes.js";
-import postRouter from "./src/routes/postRoutes.js";
-import groupRouter from "./src/routes/groupRoutes.js";
-import eventRouter from "./src/routes/eventRoutes.js";
-import messageRouter from "./src/routes/messageRoutes.js";
-import friendshipRouter from "./src/routes/friendshipRoutes.js";
-import commentRouter from "./src/routes/commentRoutes.js";
-import photoRouter from "./src/routes/photoRoutes.js";
+// import postRouter from "./src/routes/postRoutes.js";
+// import groupRouter from "./src/routes/groupRoutes.js";
+// import eventRouter from "./src/routes/eventRoutes.js";
+// import messageRouter from "./src/routes/messageRoutes.js";
+// import friendshipRouter from "./src/routes/friendshipRoutes.js";
+// import commentRouter from "./src/routes/commentRoutes.js";
+// import photoRouter from "./src/routes/photoRoutes.js";
 import bodyParser from "body-parser";
-import eventAttendeeRouter from "./src/routes/eventAttendeeRoute.js";
-import groupMembersRouter from "./src/routes/groupMemberRoutes.js";
-import emailTemp from "./emailTemp.js";
-import nodemailer from "nodemailer";
-import cron from "node-cron";
+// import eventAttendeeRouter from "./src/routes/eventAttendeeRoute.js";
+// import groupMembersRouter from "./src/routes/groupMemberRoutes.js";
+// import emailTemp from "./emailTemp.js";
+// import nodemailer from "nodemailer";
+// import cron from "node-cron";
 import cors from 'cors'
 
 dotenv.config();
@@ -58,16 +58,16 @@ app.use( cors( corsOptions ) );
 
 //Routes
 app.use("/api/users", userRouter);
-app.use("/api/posts", postRouter);
-app.use("/api/groups", groupRouter);
-app.use("/api/events", eventRouter);
-app.use("/api/messages", messageRouter);
-app.use("/api/friendship", friendshipRouter);
-app.use("/api/comments", commentRouter);
+// app.use("/api/posts", postRouter);
+// app.use("/api/groups", groupRouter);
+// app.use("/api/events", eventRouter);
+// app.use("/api/messages", messageRouter);
+// app.use("/api/friendship", friendshipRouter);
+// app.use("/api/comments", commentRouter);
 
-app.use("/api/photos", photoRouter);
-app.use("/api/groupmembers", groupMembersRouter);
-app.use("/api/eventattendees", eventAttendeeRouter);
+// app.use("/api/photos", photoRouter);
+// app.use("/api/groupmembers", groupMembersRouter);
+// app.use("/api/eventattendees", eventAttendeeRouter);
 
 app.listen(port, () => {
   logger.info(`Hiphonic running on http://localhost:${port} `);
