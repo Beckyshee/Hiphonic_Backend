@@ -1,9 +1,7 @@
--- Create Database
-CREATE DATABASE SocialNetworkMedia;
-USE SocialNetworkDB;
+CREATE DATABASE Hiphonic
+USE Hiphonic
 
---tbl_user and group table to tbl_group
--- Create User Table
+select * from tbl_user
 
 CREATE TABLE tbl_user (
     UserID VARCHAR(255) PRIMARY KEY,
@@ -16,9 +14,8 @@ CREATE TABLE tbl_user (
 	WebsiteLink VARCHAR(100),
 	Date DATETIME DEFAULT GETDATE() 
 );
-
-select \* from tbl_user
--- Create Post Table
+drop table tbl_user
+select * from Post
 CREATE TABLE Post (
 PostID VARCHAR(255) PRIMARY KEY,
 UserID VARCHAR(255),
@@ -26,10 +23,11 @@ Content TEXT,
 PostDate DATETIME,
 Likes INT DEFAULT 0 ,
 Comments INT DEFAULT 0,
+Share INT DEFAULT 0 ,
 FOREIGN KEY (UserID) REFERENCES tbl_user(UserID)
 );
 
--- Create Comment Table
+
 CREATE TABLE Comment (
 CommentID VARCHAR PRIMARY KEY,
 PostID VARCHAR(255),
@@ -39,6 +37,27 @@ Content TEXT,
 FOREIGN KEY (PostID) REFERENCES Post(PostID),
 FOREIGN KEY (UserID) REFERENCES tbl_user(UserID)
 );
+
+
+-- Create Comment Table
+CREATE TABLE tbl_Like (
+LikeID VARCHAR PRIMARY KEY,
+PostID VARCHAR(255),
+UserID VARCHAR(255),
+LikeDate DATETIME DEFAULT GETDATE(),
+FOREIGN KEY (PostID) REFERENCES Post(PostID),
+FOREIGN KEY (UserID) REFERENCES tbl_user(UserID)
+);
+
+
+CREATE TABLE Share (
+ShareID VARCHAR PRIMARY KEY,
+PostID VARCHAR(255),
+UserID VARCHAR(255), 
+FOREIGN KEY (PostID) REFERENCES Post(PostID),
+FOREIGN KEY (UserID) REFERENCES tbl_user(UserID)
+);
+
 
 -- Create Friendship Table
 CREATE TABLE Friendship (
