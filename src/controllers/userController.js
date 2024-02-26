@@ -163,10 +163,6 @@ export const sendMail = async (email) => {
   }
 };
 
-
-
-
-
 // Login a user
 export const loginUser = async (req, res) => {
   try {
@@ -189,7 +185,10 @@ export const loginUser = async (req, res) => {
       expiresIn: "72h",
     });
 
-    res.json({ message: "Logged in successfully", token });
+    const { Password: password, ...userDetails } = user;
+    console.log("user res", userDetails);
+
+    res.json({ message: "Logged in successfully", userDetails, token });
   } catch (error) {
     sendServerError(res, error.message);
   }

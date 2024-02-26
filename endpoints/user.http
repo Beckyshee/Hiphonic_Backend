@@ -18,7 +18,7 @@ Content-Type: application/json
 
 {
    
-    "Email" : "leambura682@gmail.com",
+    "Email" : "leahnyambura682@gmail.com",
     "Password" : "12345678"
     
 }
@@ -48,9 +48,9 @@ GET http://localhost:5400/api/users/allusers
 
 
 ### updating a users
-PUT http://localhost:5400/api/users/update/e2de392d-87a7-4580-a379-a20d08eca3c4
+PUT http://localhost:5400/api/users/update/22736553-0935-47aa-9b22-ddbc4c8b7ad6
 Content-Type: application/json
-authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlMmRlMzkyZC04N2E3LTQ1ODAtYTM3OS1hMjBkMDhlY2EzYzQiLCJpYXQiOjE3MDg4OTAxNjYsImV4cCI6MTcwOTE0OTM2Nn0.jKyNevkJ9shF1C9-qXRjiAkTBfruptU-X0uCN5PQ-b8
+authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMjczNjU1My0wOTM1LTQ3YWEtOWIyMi1kZGJjNGM4YjdhZDYiLCJpYXQiOjE3MDg5NDE5NTUsImV4cCI6MTcwOTIwMTE1NX0.w673opNnnv0JTKvVn6hKScPG_ljasvhJUu_vBUJ8ZEY
 
 {
     "Username": "nyam",
