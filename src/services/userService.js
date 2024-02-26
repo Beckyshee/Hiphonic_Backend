@@ -1,5 +1,6 @@
 import { poolRequest, sql } from "../utils/dbConnect.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const addUser = async (newUser) => {
   try {
@@ -19,7 +20,6 @@ export const addUser = async (newUser) => {
     return error;
   }
 };
-import jwt from "jsonwebtoken";
 
 export const getUserByEmailService = async (email) => {
   try {
@@ -43,9 +43,6 @@ export const getUserByIDService = async (UserID) => {
     throw error;
   }
 };
-
-
-
 
 // export const getAllUsersService = async () => {
 //   try {
@@ -127,7 +124,6 @@ export const deleteUserService = async (userID) => {
   }
 };
 
-
 //   export const findByCredentialsService = async (user) => {
 //     try
 //     {
@@ -135,20 +131,20 @@ export const deleteUserService = async (userID) => {
 //         const userFoundResponse=await poolRequest()
 //         .input('Email', sql.VarChar, user.Email)
 //         .query('SELECT * FROM tbl_user WHERE Email=@Email')
-     
+
 //         if(userFoundResponse.recordset[0]){
 //           if(await bcrypt.compare(user.Password,userFoundResponse.recordset[0].Password)){
-     
+
 //             let token=jwt.sign({
 //               UserID:userFoundResponse.recordset[0].UserID,
 //               Password:userFoundResponse.recordset[0].Password,
 //               Email:userFoundResponse.recordset[0].Email
 //             },process.env.JWT_SECRET,{ expiresIn: "24h" })
- 
+
 //             console.log("Token is", token);
 //             const {Password,...user}=userFoundResponse.recordset[0]
 //             return {user,token:`JWT ${token}`}
-     
+
 //           }else{
 //             return { error: 'Invalid Credentials' };
 //           }
