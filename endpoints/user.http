@@ -1,0 +1,70 @@
+### registering a user
+POST http://localhost:5400/api/users
+Content-Type: application/json
+
+{
+    "Username": "nyambuu",
+    "Email" : "leahnyambura682@gmail.com",
+    "Password" : "12345678",
+    "TagName": "@kanyambu_kamama",
+    "Location" : "Nyandarua,Kenya"
+}
+
+
+
+### loging in a user
+POST http://localhost:5400/api/users/login
+Content-Type: application/json
+
+{
+   
+    "Email" : "leahnyambura682@gmail.com",
+    "Password" : "12345678"
+    
+}
+
+
+
+
+//send mail
+###
+GET http://localhost:5400/send-mail
+
+
+
+###
+# getting a single user
+GET http://localhost:5400/api/users/20072356-9d6d-427b-9a0a-d02f1270a560
+Content-Type: application/json
+
+
+
+###
+# get all users
+
+GET http://localhost:5400/api/users/allusers
+
+
+
+
+### updating a users
+PUT http://localhost:5400/api/users/update/e2de392d-87a7-4580-a379-a20d08eca3c4
+Content-Type: application/json
+authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlMmRlMzkyZC04N2E3LTQ1ODAtYTM3OS1hMjBkMDhlY2EzYzQiLCJpYXQiOjE3MDg4OTAxNjYsImV4cCI6MTcwOTE0OTM2Nn0.jKyNevkJ9shF1C9-qXRjiAkTBfruptU-X0uCN5PQ-b8
+
+{
+    "Username": "nyam",
+    "Email": "leahnyambura682@gmail.com",
+    "TagName": "@kanyambu_kamama",
+    "Location": "Nyandarua,Kenya",
+    "Company": "@kanyambu_kamama",
+    "WebsiteLink" : "http://angela.com"
+  }
+
+
+
+###
+# delete a users
+DELETE http://localhost:5400/api/users/delete/cdc66f64-cafe-4170-a2d8-f6d9c8e1f4cb
+Content-Type: application/json
+authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZGM2NmY2NC1jYWZlLTQxNzAtYTJkOC1mNmQ5YzhlMWY0Y2IiLCJpYXQiOjE3MDg3ODA3NDUsImV4cCI6MTcwOTAzOTk0NX0.xq9FvSg82scAVGkgH9WXl2Y2XdZ3YhKo48cyxxvuFGw
