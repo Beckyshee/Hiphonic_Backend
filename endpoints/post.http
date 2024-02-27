@@ -1,0 +1,38 @@
+###adding post 
+POST http://localhost:5400/api/posts
+Content-Type: application/json
+
+{
+    "UserID": "ab18b9ab-baa8-42ad-aeea-44a6b303e1f1",
+    "Content": "Your post content here"
+}
+
+
+
+###
+# getting a single post
+GET http://localhost:5400/api/posts/c819ee94-438b-4769-abec-4da44b6dbfb7
+Content-Type: application/json
+
+
+###
+# get all posts
+
+GET http://localhost:5400/api/posts/all/
+
+
+
+### updating a post
+PUT http://localhost:5400/api/posts/update/c819ee94-438b-4769-abec-4da44b6dbfb7
+Content-Type: application/json
+
+{
+
+    "Content" : "Kanyes new album has a fire cover but my beats were slapping"
+}
+
+
+
+###
+# delete a post
+DELETE http://localhost:5400/api/posts/delete/9311a22a-0684-4ac0-a904-57f5acf8e304

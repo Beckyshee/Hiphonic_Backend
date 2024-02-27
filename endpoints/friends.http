@@ -1,0 +1,43 @@
+### creating an friendship
+POST http://localhost:5400/api/friendship
+Content-Type: application/json
+
+{
+    "User1ID": "ab18b9ab-baa8-42ad-aeea-44a6b303e1f1",
+    "User2ID": "fd6fccb1-5aad-48ad-a938-d66923da1e9f",
+    "FriendshipDate": "02-27-2024"
+}
+
+
+
+###
+# getting a single friendship
+GET http://localhost:5400/api/friendship/15bf7912-a87b-4ed9-b0e0-da71fc28e4af
+Content-Type: application/json
+
+
+### getting a user's friends
+GET http://localhost:5400/api/friendship/friends/ab18b9ab-baa8-42ad-aeea-44a6b303e1f1
+Content-Type: application/json
+
+
+###
+# get all friendship
+
+GET http://localhost:5400/api/friendship/allfriends
+
+
+
+### updating an friendship
+PUT http://localhost:5400/api/friendship/update/15bf7912-a87b-4ed9-b0e0-da71fc28e4af
+Content-Type: application/json
+
+{
+    "FriendshipDate": ""
+}
+
+
+
+###
+# delete an event
+DELETE http://localhost:5400/api/friendship/delete/15bf7912-a87b-4ed9-b0e0-da71fc28e4af
