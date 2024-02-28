@@ -12,7 +12,6 @@ Content-Type: application/json
 
 
 
-### log in a user
 POST http://localhost:5400/api/users/login
 Content-Type: application/json
 
@@ -50,12 +49,12 @@ GET http://localhost:5400/api/users/allusers
 ### updating a users
 PUT http://localhost:5400/api/users/update/22736553-0935-47aa-9b22-ddbc4c8b7ad6
 Content-Type: application/json
-authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMjczNjU1My0wOTM1LTQ3YWEtOWIyMi1kZGJjNGM4YjdhZDYiLCJpYXQiOjE3MDg5NDE5NTUsImV4cCI6MTcwOTIwMTE1NX0.w673opNnnv0JTKvVn6hKScPG_ljasvhJUu_vBUJ8ZEY
+# authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMjczNjU1My0wOTM1LTQ3YWEtOWIyMi1kZGJjNGM4YjdhZDYiLCJpYXQiOjE3MDg5NDE5NTUsImV4cCI6MTcwOTIwMTE1NX0.w673opNnnv0JTKvVn6hKScPG_ljasvhJUu_vBUJ8ZEY
 
 {
     "Username": "nyam",
     "Email": "leahnyambura682@gmail.com",
-    "TagName": "@kanyambu_kamama",
+    "TagName": "@kanyambu_kamam",
     "Location": "Nyandarua,Kenya",
     "Company": "@kanyambu_kamama",
     "WebsiteLink" : "http://angela.com"

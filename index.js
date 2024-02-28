@@ -4,9 +4,9 @@ import logger from "./src/utils/logger.js";
 import userRouter from "./src/routes/userRoutes.js";
 import postRouter from "./src/routes/postRoutes.js";
 // import groupRouter from "./src/routes/groupRoutes.js";
-// import eventRouter from "./src/routes/eventRoutes.js";
+import eventRouter from "./src/routes/eventRoutes.js";
 // import messageRouter from "./src/routes/messageRoutes.js";
-// import friendshipRouter from "./src/routes/friendshipRoutes.js";
+import friendshipRouter from "./src/routes/friendshipRoutes.js";
 // import commentRouter from "./src/routes/commentRoutes.js";
 // import photoRouter from "./src/routes/photoRoutes.js";
 import bodyParser from "body-parser";
@@ -15,7 +15,7 @@ import bodyParser from "body-parser";
 // import emailTemp from "./emailTemp.js";
 // import nodemailer from "nodemailer";
 // import cron from "node-cron";
-import cors from 'cors'
+import cors from "cors";
 
 dotenv.config();
 const app = express();
@@ -26,13 +26,12 @@ var corsOptions = {
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
-
 // app.use( cors( {
 //   path:"*"
 // }))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use( cors( corsOptions ) );
+app.use(cors(corsOptions));
 
 // const sendMail = async () => {
 //   let transporter = nodemailer.createTransport({
@@ -61,9 +60,9 @@ app.use( cors( corsOptions ) );
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
 // app.use("/api/groups", groupRouter);
-// app.use("/api/events", eventRouter);
+app.use("/api/events", eventRouter);
 // app.use("/api/messages", messageRouter);
-// app.use("/api/friendship", friendshipRouter);
+app.use("/api/friendship", friendshipRouter);
 // app.use("/api/comments", commentRouter);
 
 // app.use("/api/photos", photoRouter);

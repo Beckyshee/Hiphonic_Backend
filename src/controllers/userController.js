@@ -186,7 +186,7 @@ export const loginUser = async (req, res) => {
     });
 
     const { Password: password, ...userDetails } = user;
-    console.log("user res", userDetails);
+    //console.log("user res", userDetails);
 
     res.json({ message: "Logged in successfully", userDetails, token });
   } catch (error) {

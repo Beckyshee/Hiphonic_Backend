@@ -3,8 +3,8 @@ POST http://localhost:5400/api/friendship
 Content-Type: application/json
 
 {
-    "User1ID": "ab18b9ab-baa8-42ad-aeea-44a6b303e1f1",
-    "User2ID": "fd6fccb1-5aad-48ad-a938-d66923da1e9f",
+    "User1ID": "6bddb1bd-2dce-4a09-bb0c-5ad71ceb9012",
+    "User2ID": "22736553-0935-47aa-9b22-ddbc4c8b7ad6",
     "FriendshipDate": "02-27-2024"
 }
 
@@ -12,14 +12,17 @@ Content-Type: application/json
 
 ###
 # getting a single friendship
-GET http://localhost:5400/api/friendship/15bf7912-a87b-4ed9-b0e0-da71fc28e4af
+GET http://localhost:5400/api/friendship/0518b1f5-03c9-49f9-8cfe-824978c0c9da
 Content-Type: application/json
 
 
 ### getting a user's friends
-GET http://localhost:5400/api/friendship/friends/ab18b9ab-baa8-42ad-aeea-44a6b303e1f1
+GET http://localhost:5400/api/friendship/friends/6bddb1bd-2dce-4a09-bb0c-5ad71ceb9012
 Content-Type: application/json
 
+###
+GET http://localhost:5400/api/friendships/friends/23a5e597-7fed-4eb7-929f-201fb1465a16
+Content-Type: application/json
 
 ###
 # get all friendship
@@ -29,7 +32,7 @@ GET http://localhost:5400/api/friendship/allfriends
 
 
 ### updating an friendship
-PUT http://localhost:5400/api/friendship/update/15bf7912-a87b-4ed9-b0e0-da71fc28e4af
+PUT http://localhost:5400/api/friendship/update/0518b1f5-03c9-49f9-8cfe-824978c0c9da
 Content-Type: application/json
 
 {
@@ -40,4 +43,4 @@ Content-Type: application/json
 
 ###
 # delete an event
-DELETE http://localhost:5400/api/friendship/delete/15bf7912-a87b-4ed9-b0e0-da71fc28e4af
+DELETE http://localhost:5400/api/friendship/delete/0518b1f5-03c9-49f9-8cfe-824978c0c9da

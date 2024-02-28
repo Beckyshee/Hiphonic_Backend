@@ -5,9 +5,9 @@ import {
   getSinglePost,
   updatePost,
   deletePost,
+  getPostsByUser,
 } from "../controllers/postController.js";
 import { verifyToken } from "../middleware/verifyToken.js";
-
 
 const postRouter = Router();
 
@@ -18,9 +18,9 @@ const postRouter = Router();
 // postRouter.get("/:PostID", getSinglePost);
 postRouter.post("/", createNewPost);
 postRouter.put("/update/:PostID", updatePost);
-postRouter.delete( "/delete/:PostID", deletePost );
+postRouter.delete("/delete/:PostID", deletePost);
 postRouter.get("/all/", getAlPosts);
 postRouter.get("/:PostID", getSinglePost);
+postRouter.get("/user/:UserID", getPostsByUser);
 
-
-export default  postRouter
+export default postRouter;
