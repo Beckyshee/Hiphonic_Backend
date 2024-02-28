@@ -7,7 +7,14 @@ import {
   sendServerError,
   handleUpdateFailure,
 } from "../helper/helperFunction.js";
-import { addPost, deletePostService, getAllPostsService, getPostByIDService, updatedPostService } from "../services/postService.js";
+import {
+  addPost,
+  deletePostService,
+  getAllPostsService,
+  getPostByIDService,
+  getPostsByUserIDService,
+  updatedPostService,
+} from "../services/postService.js";
 import { verifyToken } from "../middleware/verifyToken.js";
 
 export const createNewPost = async (req, res) => {
@@ -44,7 +51,6 @@ export const createNewPost = async (req, res) => {
       sendServerError(res, "Failed to create Post");
     }
   } catch (error) {
-    console.log("error");
     sendServerError(res, error.message);
   }
 };
@@ -74,7 +80,24 @@ export const getSinglePost = async (req, res) => {
       return res.status(404).json({ error: "Post not found" });
     }
   } catch (error) {
-    sendServerError(res, error.message); 
+    sendServerError(res, error.message);
+  }
+};
+
+export const getPostsByUser = async (req, res) => {
+  console.log("Controller reached");
+  try {
+    console.log("Try made");
+    const UserID = req.params.UserID;
+    const posts = await getPostsByUserIDService(UserID);
+    if (posts.length > 0) {
+      return res.status(200).json(posts);
+    } else {
+      return res.status(404).json({ error: "Posts not found" });
+    }
+  } catch (error) {
+    console.log("Error here");
+    sendServerError(res, error.message);
   }
 };
 

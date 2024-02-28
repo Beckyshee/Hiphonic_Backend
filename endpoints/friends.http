@@ -3,8 +3,8 @@ POST http://localhost:5400/api/friendship
 Content-Type: application/json
 
 {
-    "User1ID": "23a5e597-7fed-4eb7-929f-201fb1465a16",
-    "User2ID": "c51ed60b-4f2e-4596-b949-1427e59f6625",
+    "User1ID": "6bddb1bd-2dce-4a09-bb0c-5ad71ceb9012",
+    "User2ID": "22736553-0935-47aa-9b22-ddbc4c8b7ad6",
     "FriendshipDate": "02-27-2024"
 }
 
@@ -17,7 +17,7 @@ Content-Type: application/json
 
 
 ### getting a user's friends
-GET http://localhost:5400/api/friendship/friends/23a5e597-7fed-4eb7-929f-201fb1465a16
+GET http://localhost:5400/api/friendship/friends/6bddb1bd-2dce-4a09-bb0c-5ad71ceb9012
 Content-Type: application/json
 
 ###
