@@ -6,7 +6,7 @@ import userRouter from "./src/routes/userRoutes.js";
 // import groupRouter from "./src/routes/groupRoutes.js";
 // import eventRouter from "./src/routes/eventRoutes.js";
 // import messageRouter from "./src/routes/messageRoutes.js";
-// import friendshipRouter from "./src/routes/friendshipRoutes.js";
+import friendshipRouter from "./src/routes/friendshipRoutes.js";
 // import commentRouter from "./src/routes/commentRoutes.js";
 // import photoRouter from "./src/routes/photoRoutes.js";
 import bodyParser from "body-parser";
@@ -62,7 +62,7 @@ app.use("/api/users", userRouter);
 // app.use("/api/groups", groupRouter);
 // app.use("/api/events", eventRouter);
 // app.use("/api/messages", messageRouter);
-// app.use("/api/friendship", friendshipRouter);
+app.use("/api/friendship", friendshipRouter);
 // app.use("/api/comments", commentRouter);
 
 // app.use("/api/photos", photoRouter);
