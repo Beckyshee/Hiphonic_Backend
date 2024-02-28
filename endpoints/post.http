@@ -3,17 +3,20 @@ POST http://localhost:5400/api/posts
 Content-Type: application/json
 
 {
-    "UserID": "ab18b9ab-baa8-42ad-aeea-44a6b303e1f1",
-    "Content": "Your post content here"
+    "UserID": "6bddb1bd-2dce-4a09-bb0c-5ad71ceb9012",
+    "Content": "Post by Cersei"
 }
 
 
 
 ###
 # getting a single post
-GET http://localhost:5400/api/posts/c819ee94-438b-4769-abec-4da44b6dbfb7
+GET http://localhost:5400/api/posts/70d1f75c-14e0-4f0e-aa84-f4bf1b6c158a
 Content-Type: application/json
 
+### Get posts by a User
+GET http://localhost:5400/api/posts/user/6bddb1bd-2dce-4a09-bb0c-5ad71ceb9012
+Content-Type: application/json
 
 ###
 # get all posts
@@ -23,12 +26,12 @@ GET http://localhost:5400/api/posts/all/
 
 
 ### updating a post
-PUT http://localhost:5400/api/posts/update/c819ee94-438b-4769-abec-4da44b6dbfb7
+PUT http://localhost:5400/api/posts/update/70d1f75c-14e0-4f0e-aa84-f4bf1b6c158a
 Content-Type: application/json
 
 {
-
-    "Content" : "Kanyes new album has a fire cover but my beats were slapping"
+    "Content": "I drink and I know things",
+    "PostDate" : "02-27-2024"
 }
 
 
