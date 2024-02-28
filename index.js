@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import logger from "./src/utils/logger.js";
 import userRouter from "./src/routes/userRoutes.js";
-// import postRouter from "./src/routes/postRoutes.js";
+import postRouter from "./src/routes/postRoutes.js";
 // import groupRouter from "./src/routes/groupRoutes.js";
 // import eventRouter from "./src/routes/eventRoutes.js";
 // import messageRouter from "./src/routes/messageRoutes.js";
@@ -21,7 +21,8 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 var corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "http://127.0.0.1:5173",
+  credentials: true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
@@ -58,7 +59,7 @@ app.use( cors( corsOptions ) );
 
 //Routes
 app.use("/api/users", userRouter);
-// app.use("/api/posts", postRouter);
+app.use("/api/posts", postRouter);
 // app.use("/api/groups", groupRouter);
 // app.use("/api/events", eventRouter);
 // app.use("/api/messages", messageRouter);

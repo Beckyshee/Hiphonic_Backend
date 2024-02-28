@@ -44,6 +44,7 @@ export const createNewPost = async (req, res) => {
       sendServerError(res, "Failed to create Post");
     }
   } catch (error) {
+    console.log("error");
     sendServerError(res, error.message);
   }
 };
