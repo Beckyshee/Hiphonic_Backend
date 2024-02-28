@@ -17,10 +17,12 @@ export const addPost = async (newPost) => {
   }
 };
 
-
 export const getAllPostsService = async () => {
   try {
-    const result = await poolRequest().query("SELECT * FROM Post");
+    const result = await poolRequest().query(
+      "SELECT Post.*, tbl_user.Username, tbl_user.TagName FROM Post INNER JOIN tbl_user ON Post.UserID = tbl_user.UserID"
+    );
+    console.log(result.recordset);
     return result.recordset;
   } catch (error) {
     throw error;
@@ -33,6 +35,20 @@ export const getPostByIDService = async (PostID) => {
       .input("PostID", sql.VarChar(255), PostID)
       .query("SELECT * FROM Post WHERE PostID = @PostID");
     return result.recordset[0];
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getPostsByUserIDService = async (UserID) => {
+  try {
+    console.log("Service reached");
+    const result = await poolRequest()
+      .input("UserID", sql.VarChar(255), UserID)
+      .query(
+        "SELECT Post.*, tbl_user.Username, tbl_user.TagName FROM Post INNER JOIN tbl_user ON Post.UserID = tbl_user.USERID WHERE Post.UserID = @UserID"
+      );
+    return result.recordset;
   } catch (error) {
     throw error;
   }
