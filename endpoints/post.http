@@ -1,11 +1,8 @@
-###adding post 
+###adding posts
 POST http://localhost:5400/api/posts
 Content-Type: application/json
 
-{
-    "UserID": "6bddb1bd-2dce-4a09-bb0c-5ad71ceb9012",
-    "Content": "Post by Cersei"
-}
+
 
 
 
