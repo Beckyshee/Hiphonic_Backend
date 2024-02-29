@@ -20,7 +20,7 @@ export const createNewEvent = async (req, res) => {
     const { EventName, Description, EventDate, Location, EventPosterURL } =
       req.body;
 
-    const EventID = v4();
+    // const EventID = v4();
     console.log(req.body);
     const { error } = eventValidator({
       EventName,
@@ -32,9 +32,9 @@ export const createNewEvent = async (req, res) => {
     if (error) {
       return res.status(400).send(error.details[0].message);
     }
-    console.log("event id ", EventID);
+    // console.log("event id ", EventID);
     const newEvent = {
-      EventID,
+      // EventID,
       EventName,
       Description,
       EventDate,

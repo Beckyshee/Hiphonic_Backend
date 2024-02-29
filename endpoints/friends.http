@@ -3,8 +3,8 @@ POST http://localhost:5400/api/friendship
 Content-Type: application/json
 
 {
-    "User1ID": "6bddb1bd-2dce-4a09-bb0c-5ad71ceb9012",
-    "User2ID": "22736553-0935-47aa-9b22-ddbc4c8b7ad6",
+    "User1ID": "1",
+    "User2ID": "2",
     "FriendshipDate": "02-27-2024"
 }
 
@@ -43,4 +43,4 @@ Content-Type: application/json
 
 ###
 # delete an event
-DELETE http://localhost:5400/api/friendship/delete/0518b1f5-03c9-49f9-8cfe-824978c0c9da
+DELETE http://localhost:5400/api/friendship/delete/1

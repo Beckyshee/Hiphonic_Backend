@@ -112,10 +112,10 @@ export const registerUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(Password, 10);
-    const UserID = v4();
+    // const UserID = v4();
 
     const newUser = {
-      UserID,
+      // UserID,
       Username,
       Password: hashedPassword,
       Email,

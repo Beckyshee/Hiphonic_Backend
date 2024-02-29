@@ -3,7 +3,7 @@ import { poolRequest, sql } from "../utils/dbConnect.js";
 export const addEventService = async (newEvent) => {
   try {
     const result = await poolRequest()
-      .input("EventID", sql.VarChar(255), newEvent.EventID)
+      // .input("EventID", sql.VarChar(255), newEvent.EventID)
       .input("EventName", sql.VarChar(255), newEvent.EventName)
       .input("Description", sql.VarChar(255), newEvent.Description)
       .input("EventDate", sql.VarChar(255), newEvent.EventDate)
@@ -11,7 +11,7 @@ export const addEventService = async (newEvent) => {
       .input("EventPosterURL", sql.VarChar(255), newEvent.EventPosterURL)
 
       .query(
-        "INSERT INTO Event (EventID,EventName, Description,EventDate,Location,EventPosterURL) VALUES (@EventID,@EventName, @Description, @EventDate, @Location,@EventPosterURL)"
+        "INSERT INTO Event (EventName, Description,EventDate,Location,EventPosterURL) VALUES (@EventName, @Description, @EventDate, @Location,@EventPosterURL)"
       );
     console.log("result", result);
     return result;

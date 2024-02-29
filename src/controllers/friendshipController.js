@@ -26,7 +26,7 @@ export const createNewFriendship = async (req, res) => {
       const User2 = await getUserByIDService(User2ID);
       //console.log("User 2: ", User2);
       if (User2 && User1 !== User2) {
-        const FriendshipID = v4();
+        // const FriendshipID = v4();
 
         const { error } = friendshipValidator({
           FriendshipDate,
@@ -37,7 +37,7 @@ export const createNewFriendship = async (req, res) => {
         }
 
         const newFriendship = {
-          FriendshipID,
+          // FriendshipID,
           User1ID,
           User2ID,
           FriendshipDate,

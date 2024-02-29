@@ -4,12 +4,12 @@ import { poolRequest, sql } from "../utils/dbConnect.js";
 export const addGroupService = async (newGroup) => {
   try {
     const result = await poolRequest()
-      .input("GroupID", sql.VarChar(255), newGroup.GroupID)
+      // .input("GroupID", sql.VarChar(255), newGroup.GroupID)
       .input("GroupName", sql.VarChar(255), newGroup.GroupName)
       .input("Description", sql.VarChar(255), newGroup.Description)
 
       .query(
-        "INSERT INTO tbl_group (GroupID,GroupName, Description) VALUES (@GroupID,@GroupName,@Description)"
+        "INSERT INTO tbl_group (GroupName, Description) VALUES (@GroupName,@Description)"
       );
     console.log("result", result);
     return result;
