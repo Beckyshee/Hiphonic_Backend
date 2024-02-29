@@ -9,7 +9,6 @@ import {
 } from "../services/photoService.js";
 import { sendServerError } from "../helper/helperFunction.js";
 import { photoValidator } from "../validators/photoValidator.js";
-import { getPostsByUserIDService } from "../services/postService.js";
 
 
 export const addPhoto = async (req, res) => {
@@ -112,8 +111,8 @@ export const updatePhoto = async (req, res) => {
 
 export const deletePhoto = async (req, res) => {
   try {
-    const { photoID } = req.params;
-    const isDeleted = await deletePhotoService(photoID);
+    const { PhotoID } = req.params;
+    const isDeleted = await deletePhotoService(PhotoID);
 
     if (isDeleted) {
       return res.status(200).json({ message: "Photo deleted successfully" });

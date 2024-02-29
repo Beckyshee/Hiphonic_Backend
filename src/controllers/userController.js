@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { v4 } from "uuid";
+// import { v4 } from "uuid";
 import {
   addUser,
   getUserByEmailService,
@@ -112,7 +112,7 @@ export const registerUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(Password, 10);
-    const UserID = v4();
+    // const UserID = v4();
 
     const newUser = {
       UserID,

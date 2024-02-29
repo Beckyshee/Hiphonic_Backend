@@ -4,7 +4,7 @@ import logger from "./src/utils/logger.js";
 import userRouter from "./src/routes/userRoutes.js";
 import postRouter from "./src/routes/postRoutes.js";
 import photoRouter from "./src/routes/photoRoutes.js";
-// import groupRouter from "./src/routes/groupRoutes.js";
+import groupRouter from "./src/routes/groupRoutes.js";
 import eventRouter from "./src/routes/eventRoutes.js";
 // import messageRouter from "./src/routes/messageRoutes.js";
 import friendshipRouter from "./src/routes/friendshipRoutes.js";
