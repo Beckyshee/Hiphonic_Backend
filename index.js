@@ -4,14 +4,14 @@ import logger from "./src/utils/logger.js";
 import userRouter from "./src/routes/userRoutes.js";
 import postRouter from "./src/routes/postRoutes.js";
 import photoRouter from "./src/routes/photoRoutes.js";
-// import groupRouter from "./src/routes/groupRoutes.js";
+import groupRouter from "./src/routes/groupRoutes.js";
 import eventRouter from "./src/routes/eventRoutes.js";
 // import messageRouter from "./src/routes/messageRoutes.js";
 import friendshipRouter from "./src/routes/friendshipRoutes.js";
-// import commentRouter from "./src/routes/commentRoutes.js";
+import commentRouter from "./src/routes/commentRoutes.js";
 import bodyParser from "body-parser";
-// import eventAttendeeRouter from "./src/routes/eventAttendeeRoute.js";
-// import groupMembersRouter from "./src/routes/groupMemberRoutes.js";
+import eventAttendeeRouter from "./src/routes/eventAttendeeRoute.js";
+import groupMembersRouter from "./src/routes/groupMemberRoutes.js";
 // import emailTemp from "./emailTemp.js";
 // import nodemailer from "nodemailer";
 // import cron from "node-cron";
@@ -21,7 +21,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 var corsOptions = {
-  origin: "http://127.0.0.1:5173",
+  origin: "http://localhost:5173",
   credentials: true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
@@ -63,11 +63,11 @@ app.use("/api/groups", groupRouter);
 app.use("/api/events", eventRouter);
 // app.use("/api/messages", messageRouter);
 app.use("/api/friendship", friendshipRouter);
-// app.use("/api/comments", commentRouter);
+app.use("/api/comments", commentRouter);
 
 app.use("/api/photos", photoRouter);
-// app.use("/api/groupmembers", groupMembersRouter);
-// app.use("/api/eventattendees", eventAttendeeRouter);
+app.use("/api/groupmembers", groupMembersRouter);
+app.use("/api/eventattendees", eventAttendeeRouter);
 
 app.listen(port, () => {
   logger.info(`Hiphonic running on http://localhost:${port} `);

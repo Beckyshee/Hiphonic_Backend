@@ -15,14 +15,14 @@ import { getPostsByUserIDService } from "../services/postService.js";
 export const addPhoto = async (req, res) => {
   try {
     const { UserID, PhotoURL, UploadDate } = req.body;
-    const PhotoID = v4();
+    // const PhotoID = v4();
     const { error } = photoValidator({ PhotoURL, UploadDate });
     if (error) {
       return res.status(400).send(error.details[0].message);
     }
 
     const response = await addPhotoService({
-      PhotoID,
+      // PhotoID,
       UserID,
       PhotoURL,
       UploadDate,

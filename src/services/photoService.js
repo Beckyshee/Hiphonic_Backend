@@ -3,12 +3,12 @@ import { poolRequest, sql } from "../utils/dbConnect.js";
 export const addPhotoService = async (photo) => {
   try {
     const result = await poolRequest()
-      .input("PhotoID", sql.VarChar(255), photo.PhotoID)
+      // .input("PhotoID", sql.VarChar(255), photo.PhotoID)
       .input("UserID", sql.VarChar(255), photo.UserID)
       .input("PhotoURL", sql.VarChar(255), photo.PhotoURL)
       .input("UploadDate", sql.DateTime, photo.UploadDate)
       .query(
-        "INSERT INTO Photo (PhotoID, UserID, PhotoURL, UploadDate) VALUES (@PhotoID, @UserID, @PhotoURL, @UploadDate)"
+        "INSERT INTO Photo ( UserID, PhotoURL, UploadDate) VALUES (@UserID, @PhotoURL, @UploadDate)"
       );
     return result;
   } catch (error) {

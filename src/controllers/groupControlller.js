@@ -23,9 +23,9 @@ export const createNewGroup = async (req, res) => {
     const { GroupName, Description } = req.body;
     console.log(req.body);
    
-      const GroupID = v4();
+      // const GroupID = v4();
       const { error } = groupValidator( {
-        GroupID,
+        // GroupID,
       GroupName,
       Description,
     });
@@ -33,9 +33,9 @@ export const createNewGroup = async (req, res) => {
     if (error) {
       return res.status(400).send(error.details[0].message);
     }
-    console.log("group id ", GroupID);
+    // console.log("group id ", GroupID);
     const newGroup = {
-      GroupID: v4(),
+      // GroupID: v4(),
       GroupName,
       Description,
     };
