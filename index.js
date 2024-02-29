@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import logger from "./src/utils/logger.js";
 import userRouter from "./src/routes/userRoutes.js";
 import postRouter from "./src/routes/postRoutes.js";
-// import groupRouter from "./src/routes/groupRoutes.js";
+import groupRouter from "./src/routes/groupRoutes.js";
 import eventRouter from "./src/routes/eventRoutes.js";
 // import messageRouter from "./src/routes/messageRoutes.js";
 import friendshipRouter from "./src/routes/friendshipRoutes.js";
@@ -58,7 +58,7 @@ app.use(cors(corsOptions));
 //Routes
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
-// app.use("/api/groups", groupRouter);
+app.use("/api/groups", groupRouter);
 app.use("/api/events", eventRouter);
 // app.use("/api/messages", messageRouter);
 app.use("/api/friendship", friendshipRouter);
