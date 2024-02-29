@@ -115,7 +115,7 @@ export const registerUser = async (req, res) => {
     // const UserID = v4();
 
     const newUser = {
-      UserID,
+      // UserID,
       Username,
       Password: hashedPassword,
       Email,

@@ -3,12 +3,12 @@ import { poolRequest, sql } from "../utils/dbConnect.js";
 export const addPost = async (newPost) => {
   try {
     const result = await poolRequest()
-      .input("PostID", sql.VarChar(255), newPost.PostID)
+      // .input("PostID", sql.VarChar(255), newPost.PostID)
       .input("UserID", sql.VarChar(255), newPost.UserID)
       .input("Content", sql.VarChar(255), newPost.Content)
 
       .query(
-        "INSERT INTO Post (PostID,UserID, Content) VALUES (@PostID,@UserID, @Content)"
+        "INSERT INTO Post (UserID, Content) VALUES (@UserID, @Content)"
       );
     console.log("result", result);
     return result;

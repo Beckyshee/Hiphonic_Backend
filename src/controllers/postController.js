@@ -19,7 +19,7 @@ import { verifyToken } from "../middleware/verifyToken.js";
 
 export const createNewPost = async (req, res) => {
   // Validate post data
-  const PostID = v4();
+  // const PostID = v4();
   try {
     const { UserID, Content } = req.body;
     console.log(req.body);
@@ -32,7 +32,7 @@ export const createNewPost = async (req, res) => {
     }
 
     const newPost = {
-      PostID,
+      // PostID,
       UserID,
       Content,
     };

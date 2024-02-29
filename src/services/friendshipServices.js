@@ -6,12 +6,12 @@ export const addFriendshipService = async (newFriendship) => {
   try {
     console.log("Try made");
     const result = await poolRequest()
-      .input("FriendshipID", sql.VarChar(255), FriendshipID)
+      // .input("FriendshipID", sql.VarChar(255), FriendshipID)
       .input("User1ID", sql.VarChar(255), User1ID)
       .input("User2ID", sql.VarChar(255), User2ID)
       .input("FriendshipDate", sql.DateTime, FriendshipDate)
       .query(
-        "INSERT INTO Friendship (FriendshipID, User1ID, User2ID, FriendshipDate) VALUES (@FriendshipID, @User1ID, @User2ID, @FriendshipDate)"
+        "INSERT INTO Friendship (User1ID, User2ID, FriendshipDate) VALUES (@User1ID, @User2ID, @FriendshipDate)"
       );
     console.log("result", result);
     return result;
