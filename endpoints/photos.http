@@ -1,0 +1,47 @@
+### creating a photo
+POST http://localhost:5400/api/photos
+Content-Type: application/json
+
+{
+    "UserID": "658fb678-2cdb-46bd-bf6f-d0d3e822aec6",
+    "PhotoURL": "https://cdn.pixabay.com/photo/2015/01/03/21/46/speedometer-587864_1280.jpg",
+    "UploadDate": "2024-01-15T08:00:00Z"
+}
+
+
+
+###
+# getting a single photo
+GET http://localhost:5400/api/photos/03d18b98-c62c-4485-a9af-9abfc1976974
+Content-Type: application/json
+
+###
+# getting photos by user id
+GET http://localhost:5400/api/photos/yours/50b3aa08-0986-4eac-aa04-474996054854
+Content-Type: application/json
+
+
+
+###
+# get all photos
+
+GET http://localhost:5400/api/photos/allphotos
+
+
+
+
+### updating a photos
+PUT http://localhost:5400/api/photos/update/6d7014dd-191f-44f7-a203-f54776520c56
+Content-Type: application/json
+
+{
+    "PhotoURL": "https://th.bing.com/th/id/OIP.mBVe6ni7nQHhO4CdOv3Z7gHaE7?rs=1&pid=ImgDetMain",
+    "UploadDate": "2024-02-15T08:00:00Z"
+}
+
+
+
+
+###
+# delete a photos
+DELETE http://localhost:5400/api/photos/delete/6d7014dd-191f-44f7-a203-f54776520c56
