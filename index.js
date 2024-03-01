@@ -10,12 +10,15 @@ import eventRouter from "./src/routes/eventRoutes.js";
 import friendshipRouter from "./src/routes/friendshipRoutes.js";
 import commentRouter from "./src/routes/commentRoutes.js";
 import bodyParser from "body-parser";
+
 import eventAttendeeRouter from "./src/routes/eventAttendeeRoute.js";
 import groupMembersRouter from "./src/routes/groupMemberRoutes.js";
+
 // import emailTemp from "./emailTemp.js";
 // import nodemailer from "nodemailer";
 // import cron from "node-cron";
 import cors from "cors";
+import videoRouter from "./src/routes/videoRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -63,10 +66,16 @@ app.use("/api/groups", groupRouter);
 app.use("/api/events", eventRouter);
 // app.use("/api/messages", messageRouter);
 app.use("/api/friendship", friendshipRouter);
+
+app.use("/api/videos", videoRouter);
+
+app.use("/api/photos", photoRouter);
+
 app.use("/api/comments", commentRouter);
 
 app.use("/api/photos", photoRouter);
 app.use("/api/groupmembers", groupMembersRouter);
+
 app.use("/api/eventattendees", eventAttendeeRouter);
 
 app.listen(port, () => {
