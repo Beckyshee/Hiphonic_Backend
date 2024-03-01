@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 export const addUser = async (newUser) => {
   try {
     const result = await poolRequest()
-
       // .input("UserID", sql.INT(255), newUser.UserID)
 
       .input("Username", sql.VarChar(255), newUser.Username)
@@ -14,11 +13,9 @@ export const addUser = async (newUser) => {
       .input("TagName", sql.VarChar(50), newUser.TagName)
       .input("Location", sql.VarChar(100), newUser.Location)
       .query(
-
         "INSERT INTO tbl_user (Username, Password, Email, TagName, Location) VALUES (@Username, @Password, @Email, @TagName, @Location)"
 
-        "INSERT INTO tbl_user ( Username, Password, Email, TagName, Location) VALUES (@Username, @Password, @Email, @TagName, @Location)"
-
+        //"INSERT INTO tbl_user ( Username, Password, Email, TagName, Location) VALUES (@Username, @Password, @Email, @TagName, @Location)"
       );
     console.log("result", result);
     return result;
