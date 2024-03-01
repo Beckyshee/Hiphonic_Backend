@@ -3,10 +3,10 @@ POST http://localhost:5400/api/users
 Content-Type: application/json
 
 {
-    "Username": "Peter",
-    "Email" : "peter@gmail.com",
-    "Password" : "12345678",
-    "TagName": "@piento",
+    "Username": "Petero",
+    "Email" : "petero@gmail.com",
+    "Password" : "123456789",
+    "TagName": "@pientoz",
     "Location" : "Nyeri,Kenya"
 }
 
@@ -34,7 +34,7 @@ GET http://localhost:5400/send-mail
 
 ###
 # getting a single user
-GET http://localhost:5400/api/users/20072356-9d6d-427b-9a0a-d02f1270a560
+GET http://localhost:5400/api/users/1
 Content-Type: application/json
 
 

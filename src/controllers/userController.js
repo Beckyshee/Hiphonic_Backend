@@ -113,7 +113,14 @@ export const registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(Password, 10);
 
+
     const newUser = {
+
+    // const UserID = v4();
+
+    const newUser = {
+      // UserID,
+
       Username,
       Password: hashedPassword,
       Email,

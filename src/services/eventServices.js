@@ -4,6 +4,10 @@ export const addEventService = async (newEvent) => {
   try {
     console.log("AddEventService reached");
     const result = await poolRequest()
+
+
+      // .input("EventID", sql.VarChar(255), newEvent.EventID)
+
       .input("EventName", sql.VarChar(255), newEvent.EventName)
       .input("Description", sql.VarChar(255), newEvent.Description)
       .input("EventDate", sql.VarChar(255), newEvent.EventDate)

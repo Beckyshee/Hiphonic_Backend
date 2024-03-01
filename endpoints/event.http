@@ -3,11 +3,12 @@ POST http://localhost:5400/api/events
 Content-Type: application/json
 
 {
-    "EventName": "Christmas",
-    "Description": "Jesus Christ's Birthday",
-    "EventDate": "12-25-2024",
-    "Location": "Bethlehem",
-    "EventPosterURL": "https://img.freepik.com/free-vector/realistic-vertical-christmas-party-poster-template_79603-2220.jpg?size=626&ext=jpg"
+    "EventName": "paboyas",
+    "Description": "the pabos",
+    "EventDate": "03-04-2024",
+    "Location": "Nairobi",
+    "EventPosterURL": "click wherever"
+
 }
 
 
@@ -41,4 +42,4 @@ Content-Type: application/json
 
 ###
 # delete an event
-DELETE http://localhost:5400/api/events/delete/f7ff1214-bdef-47ce-ac89-60e800b68638
+DELETE http://localhost:5400/api/events/delete/1

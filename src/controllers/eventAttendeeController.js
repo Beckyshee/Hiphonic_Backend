@@ -2,9 +2,13 @@ import {
   addEventAttendeeService,
   removeEventAttendeeService,
   getAllEventAttendeesService,
+  getAllEventsUserAttendsService 
 } from "../services/eventAttendeeServices.js";
 import { sendServerError } from "../helper/helperFunction.js";
-import { getAllEventsUserAttendsService } from "../services/eventAttendeeServices.js";
+
+
+
+
 
 export const addEventAttendee = async (req, res) => {
   try {
@@ -58,6 +62,7 @@ export const getAllEventAttendees = async (req, res) => {
   }
 };
 
+
 export const getAllEventsUserAttends = async (req, res) => {
   try {
     console.log("controller reached");
@@ -68,3 +73,4 @@ export const getAllEventsUserAttends = async (req, res) => {
     sendServerError(res, error.message);
   }
 };
+
