@@ -3,11 +3,11 @@ POST http://localhost:5400/api/events
 Content-Type: application/json
 
 {
-    "EventName": "Dummy",
-    "Description": "Dummy",
-    "EventDate": "03-04-2024",
-    "Location": "Nairobi",
-    "EventPosterURL": "click here"
+    "EventName": "Christmas",
+    "Description": "Jesus Christ's Birthday",
+    "EventDate": "12-25-2024",
+    "Location": "Bethlehem",
+    "EventPosterURL": "https://img.freepik.com/free-vector/realistic-vertical-christmas-party-poster-template_79603-2220.jpg?size=626&ext=jpg"
 }
 
 

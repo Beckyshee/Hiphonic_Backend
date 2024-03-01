@@ -2,8 +2,8 @@ import { poolRequest, sql } from "../utils/dbConnect.js";
 
 export const addEventService = async (newEvent) => {
   try {
+    console.log("AddEventService reached");
     const result = await poolRequest()
-      .input("EventID", sql.VarChar(255), newEvent.EventID)
       .input("EventName", sql.VarChar(255), newEvent.EventName)
       .input("Description", sql.VarChar(255), newEvent.Description)
       .input("EventDate", sql.VarChar(255), newEvent.EventDate)
@@ -11,7 +11,7 @@ export const addEventService = async (newEvent) => {
       .input("EventPosterURL", sql.VarChar(255), newEvent.EventPosterURL)
 
       .query(
-        "INSERT INTO Event (EventID,EventName, Description,EventDate,Location,EventPosterURL) VALUES (@EventID,@EventName, @Description, @EventDate, @Location,@EventPosterURL)"
+        "INSERT INTO Event (EventName, Description,EventDate,Location,EventPosterURL) VALUES (@EventName, @Description, @EventDate, @Location,@EventPosterURL)"
       );
     console.log("result", result);
     return result;
@@ -32,7 +32,7 @@ export const getAllEventsService = async () => {
 export const getEventsByIDService = async (EventID) => {
   try {
     const result = await poolRequest()
-      .input("EventID", sql.VarChar(255), EventID)
+      .input("EventID", sql.Int, EventID)
       .query("SELECT * FROM Event WHERE EventID = @EventID");
     return result.recordset[0];
   } catch (error) {
@@ -44,7 +44,7 @@ export const updatedEventsService = async (updatedEvent) => {
   try {
     console.log("updated service param is ", updatedEvent);
     const result = await poolRequest()
-      .input("EventID", sql.VarChar(255), updatedEvent.EventID)
+      .input("EventID", sql.Int, updatedEvent.EventID)
       .input("EventName", sql.VarChar(255), updatedEvent.EventName)
       .input("Description", sql.VarChar(255), updatedEvent.Description)
       .input("EventDate", sql.VarChar(255), updatedEvent.EventDate)
@@ -65,7 +65,7 @@ export const deleteEventService = async (EventID) => {
   try {
     console.log("event id in service is ", EventID);
     const result = await poolRequest()
-      .input("EventID", sql.VarChar(255), EventID)
+      .input("EventID", sql.Int, EventID)
       .query("DELETE FROM Event WHERE EventID = @EventID");
 
     return result.rowsAffected[0] > 0;
