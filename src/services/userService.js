@@ -6,13 +6,16 @@ export const addUser = async (newUser) => {
   try {
     const result = await poolRequest()
       // .input("UserID", sql.INT(255), newUser.UserID)
+
       .input("Username", sql.VarChar(255), newUser.Username)
       .input("Password", sql.VarChar(255), newUser.Password)
       .input("Email", sql.VarChar(255), newUser.Email)
       .input("TagName", sql.VarChar(50), newUser.TagName)
       .input("Location", sql.VarChar(100), newUser.Location)
       .query(
-        "INSERT INTO tbl_user ( Username, Password, Email, TagName, Location) VALUES (@Username, @Password, @Email, @TagName, @Location)"
+        "INSERT INTO tbl_user (Username, Password, Email, TagName, Location) VALUES (@Username, @Password, @Email, @TagName, @Location)"
+
+        //"INSERT INTO tbl_user ( Username, Password, Email, TagName, Location) VALUES (@Username, @Password, @Email, @TagName, @Location)"
       );
     console.log("result", result);
     return result;
@@ -36,7 +39,7 @@ export const getUserByEmailService = async (email) => {
 export const getUserByIDService = async (UserID) => {
   try {
     const result = await poolRequest()
-      .input("UserID", sql.VarChar(255), UserID)
+      .input("UserID", sql.Int, UserID)
       .query("SELECT * FROM tbl_user WHERE UserID = @UserID");
     return result.recordset[0];
   } catch (error) {
@@ -67,7 +70,7 @@ export const getAllUsersService = async () => {
 export const updatedUserService = async (updatedUser) => {
   try {
     const result = await poolRequest()
-      .input("UserID", sql.VarChar(255), updatedUser.UserID)
+      .input("UserID", sql.Int, updatedUser.UserID)
       .input("Username", sql.VarChar(255), updatedUser.Username)
       .input("Email", sql.VarChar(255), updatedUser.Email)
       .input("TagName", sql.VarChar(50), updatedUser.TagName)
@@ -115,7 +118,7 @@ export const deleteUserService = async (userID) => {
   try {
     console.log("user id in service is ", userID);
     const result = await poolRequest()
-      .input("UserID", sql.VarChar(255), userID)
+      .input("UserID", sql.Int, userID)
       .query("DELETE FROM tbl_user WHERE UserID = @UserID");
 
     return result.rowsAffected[0] > 0;
