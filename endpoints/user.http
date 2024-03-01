@@ -18,8 +18,13 @@ Content-Type: application/json
 
 {
    
+<<<<<<< HEAD
     "Email" : "wambugu@gmail.com",
     "Password" : "@Wambugu123"
+=======
+    "Email" : "cacet82731@massefm.com",
+    "Password" : "#Cersei00"
+>>>>>>> 4108d737259ffe7f99d0e400b824f6a996883fe7
     
 }
 

@@ -1,8 +1,10 @@
 import Joi from "joi";
 
 const eventAttendeeSchema = Joi.object({
-  EventID: Joi.string().required(),
-  AttendeeID: Joi.string().required(),
+
+  EventID: Joi.number().required(),
+  AttendeeID: Joi.number().required(),
+
 });
 
 export const eventAttendeeValidator = (eventAttendee) => {
