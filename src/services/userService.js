@@ -12,7 +12,7 @@ export const addUser = async (newUser) => {
       .input("TagName", sql.VarChar(50), newUser.TagName)
       .input("Location", sql.VarChar(100), newUser.Location)
       .query(
-        "INSERT INTO tbl_user (UserID, Username, Password, Email, TagName, Location) VALUES (@UserID, @Username, @Password, @Email, @TagName, @Location)"
+        "INSERT INTO tbl_user (Username, Password, Email, TagName, Location) VALUES (@Username, @Password, @Email, @TagName, @Location)"
       );
     console.log("result", result);
     return result;

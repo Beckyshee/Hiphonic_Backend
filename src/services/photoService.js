@@ -4,7 +4,7 @@ export const addPhotoService = async (photo) => {
   try {
     const result = await poolRequest()
       // .input("PhotoID", sql.VarChar(255), photo.PhotoID)
-      .input("UserID", sql.VarChar(255), photo.UserID)
+      .input("UserID", sql.Int, photo.UserID)
       .input("PhotoURL", sql.VarChar(255), photo.PhotoURL)
       .input("UploadDate", sql.DateTime, photo.UploadDate)
       .query(
@@ -19,7 +19,7 @@ export const addPhotoService = async (photo) => {
 export const getPhotoByIDService = async (photoID) => {
   try {
     const result = await poolRequest()
-      .input("PhotoID", sql.VarChar(255), photoID)
+      .input("PhotoID", sql.Int, photoID)
       .query("SELECT * FROM Photo WHERE PhotoID = @PhotoID");
     return result.recordset[0];
   } catch (error) {

@@ -3,10 +3,10 @@ POST http://localhost:5400/api/users
 Content-Type: application/json
 
 {
-    "Username": "Petero",
-    "Email" : "petero@gmail.com",
-    "Password" : "123456789",
-    "TagName": "@pientoz",
+    "Username": "Becky",
+    "Email" : "becy@gmail.com",
+    "Password" : "@Becky123",
+    "TagName": "@Rebecca",
     "Location" : "Nyeri,Kenya"
 }
 
@@ -18,8 +18,8 @@ Content-Type: application/json
 
 {
    
-    "Email" : "peter@gmail.com",
-    "Password" : "12345678"
+    "Email" : "wambugu@gmail.com",
+    "Password" : "@Wambugu123"
     
 }
 
