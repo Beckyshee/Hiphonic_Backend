@@ -13,7 +13,7 @@ import bodyParser from "body-parser";
 
 import eventAttendeeRouter from "./src/routes/eventAttendeeRoute.js";
 import groupMembersRouter from "./src/routes/groupMemberRoutes.js";
-
+import { WebSocketServer } from "ws";
 // import emailTemp from "./emailTemp.js";
 // import nodemailer from "nodemailer";
 // import cron from "node-cron";
@@ -24,7 +24,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 var corsOptions = {
-  origin: "http://127.0.0.1:5173",
+  origin: "http://localhost:5173",
   credentials: true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
@@ -78,6 +78,31 @@ app.use("/api/groupmembers", groupMembersRouter);
 
 app.use("/api/eventattendees", eventAttendeeRouter);
 
-app.listen(port, () => {
+
+const server = app.listen(
+ port, () => {
   logger.info(`Hiphonic running on http://localhost:${port} `);
+}
+)
+
+
+const wss = new WebSocketServer({ server });
+
+wss.on("connection", (connection, req) => {
+  console.log("WebSocket connected...");
+
+
+  connection.on("message", (message) => {
+    console.log(`Received message: ${message}`);
+
+    wss.clients.forEach((client) => {
+      client.send(message);
+      console.log("sent  ", message);
+    });
+  });
+
+  // Listen for the connection to close
+  connection.on("close", () => {
+    console.log("WebSocket disconnected...");
+  });
 });

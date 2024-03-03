@@ -46,7 +46,7 @@ export const getFriendsOfAUserService = async (UserID) => {
     const result = await poolRequest()
       .input("UserID", sql.VarChar(255), UserID)
       .query(
-        "SELECT tbl_user.Username, tbl_user.TagName FROM tbl_user INNER JOIN Friendship ON tbl_user.UserID = Friendship.User2ID WHERE Friendship.User1ID = @UserID"
+        "SELECT tbl_user.Username, tbl_user.TagName,tbl_user.UserID FROM tbl_user INNER JOIN Friendship ON tbl_user.UserID = Friendship.User2ID WHERE Friendship.User1ID = @UserID"
       );
     return result.recordset;
   } catch (error) {
