@@ -4,11 +4,12 @@ export const addPost = async (newPost) => {
   try {
     const result = await poolRequest()
       // .input("PostID", sql.VarChar(255), newPost.PostID)
-      .input("UserID", sql.VarChar(255), newPost.UserID)
+      .input("UserID", sql.Int, newPost.UserID)
       .input("Content", sql.VarChar(255), newPost.Content)
+      .input("PostDate", sql.DateTime, newPost.PostDate)
 
       .query(
-        "INSERT INTO Post (UserID, Content) VALUES (@UserID, @Content)"
+        "INSERT INTO Post (UserID, Content, PostDate) VALUES (@UserID, @Content, @PostDate)"
       );
     console.log("result", result);
     return result;

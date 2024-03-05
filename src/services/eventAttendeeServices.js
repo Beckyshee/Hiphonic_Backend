@@ -32,7 +32,9 @@ export const getAllEventAttendeesService = async (EventID) => {
   try {
     const result = await poolRequest()
       .input("EventID", sql.Int, EventID)
-      .query("SELECT * FROM EventAttendee WHERE EventID = @EventID");
+      .query(
+        "SELECT EventAttendee.*, tbl_user.Username, tbl_user.Email FROM EventAttendee INNER JOIN tbl_user ON EventAttendee.AttendeeID = tbl_user.UserID WHERE EventID = @EventID"
+      );
     return result.recordset;
   } catch (error) {
     throw error;
@@ -46,6 +48,7 @@ export const getAllEventsUserAttendsService = async (UserID) => {
       .query(
         "SELECT Event.* FROM EventAttendee INNER JOIN Event ON EventAttendee.EventID = Event.EventID WHERE AttendeeID = @UserID"
       );
+    console.log("Events attended by user: ", result.recordset);
     return result.recordset;
   } catch (error) {
     throw error;

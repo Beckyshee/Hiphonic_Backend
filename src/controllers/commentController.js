@@ -13,14 +13,14 @@ import {
   getAllCommentsService,
   updateCommentService,
   deleteCommentService,
+  getCommentsByPostIDService,
 } from "../services/commentServices.js";
-
 
 export const addComment = async (req, res) => {
   try {
     const { PostID, UserID, Content } = req.body;
     // const CommentID = v4();
-    const CommentDate = new Date();
+    const CommentDate = new Date().toISOString();
 
     const { error } = commentValidator({
       CommentDate,
@@ -55,7 +55,6 @@ export const addComment = async (req, res) => {
   }
 };
 
-
 export const getCommentByID = async (req, res) => {
   try {
     const { CommentID } = req.params;
@@ -71,6 +70,20 @@ export const getCommentByID = async (req, res) => {
   }
 };
 
+export const getCommentsByPostID = async (req, res) => {
+  try {
+    const { PostID } = req.params;
+    const comments = await getCommentsByPostIDService(PostID);
+
+    if (comments) {
+      return res.status(200).json(comments);
+    } else {
+      return res.status(404).json({ error: "No comments found" });
+    }
+  } catch (error) {
+    sendServerError(res, error.message);
+  }
+};
 
 export const getAllComments = async (req, res) => {
   try {
@@ -85,8 +98,6 @@ export const getAllComments = async (req, res) => {
     sendServerError(res, error.message);
   }
 };
-
-
 
 export const updateComment = async (req, res) => {
   try {
