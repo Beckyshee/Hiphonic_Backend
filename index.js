@@ -1,11 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
 import logger from "./src/utils/logger.js";
+import { Server } from "socket.io";
 import userRouter from "./src/routes/userRoutes.js";
 import postRouter from "./src/routes/postRoutes.js";
 import photoRouter from "./src/routes/photoRoutes.js";
 import groupRouter from "./src/routes/groupRoutes.js";
 import eventRouter from "./src/routes/eventRoutes.js";
+import notificationRouter from "./src/routes/notificationRoutes.js";
 // import messageRouter from "./src/routes/messageRoutes.js";
 import friendshipRouter from "./src/routes/friendshipRoutes.js";
 import commentRouter from "./src/routes/commentRoutes.js";
@@ -19,6 +21,7 @@ import groupMembersRouter from "./src/routes/groupMemberRoutes.js";
 // import cron from "node-cron";
 import cors from "cors";
 import videoRouter from "./src/routes/videoRoutes.js";
+// import Post from "../Hiphonic-frontend/src/features/Post.jsx";
 
 dotenv.config();
 const app = express();
@@ -28,6 +31,65 @@ var corsOptions = {
   credentials: true,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
+
+
+const io = new Server({ 
+  cors:{
+      origin: "http://127.0.0.1:5173"
+  }
+});
+let onlineUsers =[];
+const username="Admin"
+const addNewUser = (username, socketId) => {
+  const existingUserIndex = onlineUsers.findIndex((user) => user.username === username);
+
+  if (existingUserIndex !== -1) {
+    onlineUsers[existingUserIndex].socketId = socketId;
+  } else {
+    onlineUsers.push({ username, socketId });
+  }
+  console.log("Online Users!!!:", onlineUsers); // Log online users after adding
+};
+console.log({onlineUsers})
+
+const removeUser = (socketId) => {
+  onlineUsers = onlineUsers.filter((user) => user.socketId !== socketId);
+};
+
+const getUser = (username) => {
+  return onlineUsers.find((user) => user.username === username);
+};
+
+io.on("connection", (socket) => {
+  console.log("New socket connection:", socket.id); // Log new socket connection
+
+  socket.on("newUser", (username) => {
+    addNewUser(username, socket.id);
+  });
+
+  socket.on("sendNotification", ({ senderName, receiverName, type }) => {
+    const receiver = getUser(receiverName);
+    if (receiver) {
+      io?.to(receiver.socketId).emit("getNotification", {
+        senderName,
+        type,
+      });
+    } else {
+      console.log(`User '${receiverName}' not found or not connected.`);
+      // Handle the case where the receiver is not found or not connected
+    }
+  });
+  
+
+
+  // io.emit(" ", "Hello this its test")
+  // console.log("someone is in the app!!!")
+  socket.on("disconnect", ()=>{
+    removeUser(socket.id);
+
+    console.log("someone has left the app");
+  })
+});
 
 // app.use( cors( {
 //   path:"*"
@@ -77,7 +139,9 @@ app.use("/api/photos", photoRouter);
 app.use("/api/groupmembers", groupMembersRouter);
 
 app.use("/api/eventattendees", eventAttendeeRouter);
+app.use("/api/notifications", notificationRouter);
 
+io.listen(5000);
 app.listen(port, () => {
   logger.info(`Hiphonic running on http://localhost:${port} `);
 });

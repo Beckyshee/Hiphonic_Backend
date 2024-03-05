@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export const postSchema = Joi.object({
-  UserID: Joi.string().required(),
+  UserID: Joi.number().required(),
   Content: Joi.string().required(),
 });
 
