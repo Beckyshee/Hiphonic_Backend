@@ -1,0 +1,41 @@
+### creating a group member
+POST http://localhost:5400/api/groupmembers
+Content-Type: application/json
+
+{
+    "GroupID": "3",
+    "MemberID": "2"
+}
+
+
+
+###
+# getting a single group
+GET http://localhost:5400/api/groups/df62b93b-69af-446a-b8c1-e8fbf6c0860f
+Content-Type: application/json
+
+
+###
+# get all groupmembers of a group
+
+GET http://localhost:5400/api/groupmembers/all/3
+
+
+###
+# get all groups
+
+GET http://localhost:5400/api/groupmembers/all
+
+### updating a post
+PUT http://localhost:5400/api/groupmembers/
+Content-Type: application/json
+
+{
+    "GroupID": "d14e25bb-a925-423d-a004-863778c84d62"
+}
+
+
+
+###
+# delete a member from group
+DELETE http://localhost:5400/api/groupmembers/1/2

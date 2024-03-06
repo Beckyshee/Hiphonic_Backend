@@ -1,0 +1,53 @@
+### creating a video
+POST http://localhost:5400/api/videos
+Content-Type: application/json
+
+{
+    "UserID": 3,
+    "VideoURL": "https://www.youtube.com/shorts/42Fjn6ZfcUU?feature=share",
+    "Category": "Sports"
+}
+
+
+
+###
+# getting a video by ID
+GET http://localhost:5400/api/videos/1
+Content-Type: application/json
+
+###
+GET http://localhost:5400/api/videos/category/health
+
+
+###
+# getting videos by user id
+GET http://localhost:5400/api/videos/user/2
+Content-Type: application/json
+
+
+
+###
+# get all videos
+
+GET http://localhost:5400/api/videos
+
+
+
+
+### updating a video
+PUT http://localhost:5400/api/videos/update/2
+Content-Type: application/json
+
+{
+    
+    "VideoURL": "https://www.youtube.com/shorts/42Fjn6ZfcUU?feature=share",
+    "Category": "fitness",
+    "UploadDate": "2024-02-15T08:00:00Z"
+}
+
+
+
+
+###
+# delete a video
+DELETE http://localhost:5400/api/videos/delete/1

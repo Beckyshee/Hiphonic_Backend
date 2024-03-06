@@ -1,0 +1,39 @@
+### creating an event
+POST http://localhost:5400/api/eventattendees
+Content-Type: application/json
+
+{
+    "EventID": "2",
+    "AttendeeID": "2"
+}
+
+
+
+
+###
+# getting a single event
+GET http://localhost:5400/api/eventattendees
+Content-Type: application/json
+
+
+###
+# get all events
+
+GET http://localhost:5400/api/eventattendees/cb1bd2bc-d229-49c7-bb91-b5140cd79a99/all
+
+
+
+### updating an event
+PUT http://localhost:5400/api/eventattendees
+Content-Type: application/json
+
+{
+    "EventID": "cb1bd2bc-d229-49c7-bb91-b5140cd79a99",
+    "AttendeeID": "58e35ffa-aa21-44e8-8269-7ea9497e297d"
+}
+
+
+
+###
+# delete an event
+DELETE http://localhost:5400/api/eventattendees/cb1bd2bc-d229-49c7-bb91-b5140cd79a99/58e35ffa-aa21-44e8-8269-7ea9497e297d
