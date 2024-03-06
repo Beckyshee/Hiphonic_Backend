@@ -33,7 +33,7 @@ export const getAllPostsService = async () => {
 export const getPostByIDService = async (PostID) => {
   try {
     const result = await poolRequest()
-      .input("PostID", sql.VarChar(255), PostID)
+      .input("PostID", sql.Int, PostID)
       .query("SELECT * FROM Post WHERE PostID = @PostID");
     return result.recordset[0];
   } catch (error) {
@@ -45,7 +45,7 @@ export const getPostsByUserIDService = async (UserID) => {
   try {
     console.log("Service reached");
     const result = await poolRequest()
-      .input("UserID", sql.VarChar(255), UserID)
+      .input("UserID", sql.Int, UserID)
       .query(
         "SELECT Post.*, tbl_user.Username, tbl_user.TagName FROM Post INNER JOIN tbl_user ON Post.UserID = tbl_user.USERID WHERE Post.UserID = @UserID"
       );
@@ -59,7 +59,7 @@ export const updatedPostService = async (updatedPost) => {
   try {
     console.log("updated service param is ", updatedPost);
     const result = await poolRequest()
-      .input("PostID", sql.VarChar(255), updatedPost.PostID)
+      .input("PostID", sql.Int, updatedPost.PostID)
       .input("Content", sql.VarChar(255), updatedPost.Content)
       .query(`UPDATE Post SET Content = @Content WHERE PostID = @PostID`);
     console.log("result is ", result);
@@ -74,7 +74,7 @@ export const deletePostService = async (PostID) => {
   try {
     console.log("post id in service is ", PostID);
     const result = await poolRequest()
-      .input("PostID", sql.VarChar(255), PostID)
+      .input("PostID", sql.Int, PostID)
       .query("DELETE FROM Post WHERE PostID = @PostID");
 
     return result.rowsAffected[0] > 0;
