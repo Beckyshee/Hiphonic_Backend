@@ -2,13 +2,9 @@ import {
   addEventAttendeeService,
   removeEventAttendeeService,
   getAllEventAttendeesService,
-  getAllEventsUserAttendsService 
+  getAllEventsUserAttendsService,
 } from "../services/eventAttendeeServices.js";
 import { sendServerError } from "../helper/helperFunction.js";
-
-
-
-
 
 export const addEventAttendee = async (req, res) => {
   try {
@@ -62,15 +58,26 @@ export const getAllEventAttendees = async (req, res) => {
   }
 };
 
-
-export const getAllEventsUserAttends = async (req, res) => {
+export const getEventsAttendedByUser = async (req, res) => {
   try {
-    console.log("controller reached");
-    const { UserID } = req.params;
+    const UserID = req.params.UserID;
+    console.log(UserID);
     const events = await getAllEventsUserAttendsService(UserID);
     return res.status(200).json(events);
   } catch (error) {
-    sendServerError(res, error.message);
+    sendServerError(res.error.message);
   }
 };
 
+// export const getAllEventsOneUserAttends = async (req, res) => {
+//   console.log("controller reached");
+//   try {
+//     console.log("I am trying");
+//     const { UserID } = req.params;
+//     const events = await getAllEventsUserAttendsService(UserID);
+//     return res.status(200).json(events);
+//   } catch (error) {
+//     console.log("This is the error");
+//     sendServerError(res, error.message);
+//   }
+// };

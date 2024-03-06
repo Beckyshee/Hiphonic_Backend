@@ -27,19 +27,19 @@ GET http://localhost:5400/api/events/allevents
 
 
 ### updating an event
-PUT http://localhost:5400/api/events/update/128f7cff-7d95-4966-a5b6-87150338712b
+PUT http://localhost:5400/api/events/update/3
 Content-Type: application/json
 
 {
-    "EventName": "Valentine is coming",
-    "Description": "where is your boyfriend",
-    "EventDate": "05-04-2024",
+    "EventName": "New Year Party",
+    "Description": "Lets welcome the New year",
+    "EventDate": "01-01-2025",
     "Location": "Everywhere",
-    "EventPosterURL": "http://becks.com"
+    "EventPosterURL": "https://images.pexels.com/photos/625644/pexels-photo-625644.jpeg?auto=compress&cs=tinysrgb&w=400"
 }
 
 
 
 ###
 # delete an event
-DELETE http://localhost:5400/api/events/delete/1
+DELETE http://localhost:5400/api/events/delete/3
