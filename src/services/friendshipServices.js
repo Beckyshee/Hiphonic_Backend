@@ -7,8 +7,8 @@ export const addFriendshipService = async (newFriendship) => {
     console.log("Try made");
     const result = await poolRequest()
       // .input("FriendshipID", sql.VarChar(255), FriendshipID)
-      .input("User1ID", sql.VarChar(255), User1ID)
-      .input("User2ID", sql.VarChar(255), User2ID)
+      .input("User1ID", sql.Int, User1ID)
+      .input("User2ID", sql.Int, User2ID)
       .input("FriendshipDate", sql.DateTime, FriendshipDate)
       .query(
         "INSERT INTO Friendship (User1ID, User2ID, FriendshipDate) VALUES (@User1ID, @User2ID, @FriendshipDate)"
@@ -33,7 +33,7 @@ export const getAllFriendshipsService = async () => {
 export const getFriendshipByIDService = async (FriendshipID) => {
   try {
     const result = await poolRequest()
-      .input("FriendshipID", sql.VarChar(255), FriendshipID)
+      .input("FriendshipID", sql.Int, FriendshipID)
       .query("SELECT * FROM Friendship WHERE FriendshipID = @FriendshipID");
     return result.recordset[0];
   } catch (error) {
@@ -44,9 +44,9 @@ export const getFriendshipByIDService = async (FriendshipID) => {
 export const getFriendsOfAUserService = async (UserID) => {
   try {
     const result = await poolRequest()
-      .input("UserID", sql.VarChar(255), UserID)
+      .input("UserID", sql.Int, UserID)
       .query(
-        "SELECT tbl_user.Username, tbl_user.TagName FROM tbl_user INNER JOIN Friendship ON tbl_user.UserID = Friendship.User2ID WHERE Friendship.User1ID = @UserID"
+        "SELECT tbl_user.Username, tbl_user.TagName,tbl_user.UserID FROM tbl_user INNER JOIN Friendship ON tbl_user.UserID = Friendship.User2ID WHERE Friendship.User1ID = @UserID"
       );
     return result.recordset;
   } catch (error) {
@@ -58,9 +58,9 @@ export const updateFriendshipService = async (updatedFriendship) => {
   try {
     console.log("updated service param is ", updatedFriendship);
     const result = await poolRequest()
-      .input("FriendshipID", sql.VarChar(255), updatedFriendship.FriendshipID)
-      .input("User1ID", sql.VarChar(255), updatedFriendship.User1ID)
-      .input("User2ID", sql.VarChar(255), updatedFriendship.User2ID)
+      .input("FriendshipID", sql.Int, updatedFriendship.FriendshipID)
+      .input("User1ID", sql.Int, updatedFriendship.User1ID)
+      .input("User2ID", sql.Int, updatedFriendship.User2ID)
       .input("FriendshipDate", sql.DateTime, updatedFriendship.FriendshipDate)
       .query(
         `UPDATE Friendship SET User1ID = @User1ID, User2ID = @User2ID, FriendshipDate = @FriendshipDate WHERE FriendshipID = @FriendshipID`
@@ -77,7 +77,7 @@ export const deleteFriendshipService = async (FriendshipID) => {
   try {
     console.log("friendship id in service is ", FriendshipID);
     const result = await poolRequest()
-      .input("FriendshipID", sql.VarChar(255), FriendshipID)
+      .input("FriendshipID", sql.Int, FriendshipID)
       .query("DELETE FROM Friendship WHERE FriendshipID = @FriendshipID");
 
     return result.rowsAffected[0] > 0;

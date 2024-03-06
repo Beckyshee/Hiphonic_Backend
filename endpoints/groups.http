@@ -3,8 +3,8 @@ POST http://localhost:5400/api/groups
 Content-Type: application/json
 
 {
-    "GroupName": "the shags mundos",
-    "Description" : "vienyejis"
+    "GroupName": "The Iron Throne",
+    "Description" : "All claimants to the throne"
 }
 
 

@@ -3,15 +3,15 @@ POST http://localhost:5400/api/posts
 Content-Type: application/json
 
 {
-    "UserID": "4",
-    "Content": "A the Admin"
+    "UserID": 1,
+    "Content": "If they ain't with us, they're against us, Jamie"
 }
 
 
 
 ###
 # getting a single post
-GET http://localhost:5400/api/posts/70d1f75c-14e0-4f0e-aa84-f4bf1b6c158a
+GET http://localhost:5400/api/posts/1
 Content-Type: application/json
 
 
@@ -39,4 +39,4 @@ Content-Type: application/json
 
 ###
 # delete a post
-DELETE http://localhost:5400/api/posts/delete/1
+DELETE http://localhost:5400/api/posts/delete/10

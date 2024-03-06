@@ -3,8 +3,8 @@ POST http://localhost:5400/api/friendship
 Content-Type: application/json
 
 {
-    "User1ID": "1",
-    "User2ID": "2",
+    "User1ID": "2",
+    "User2ID": "1",
     "FriendshipDate": "02-27-2024"
 }
 

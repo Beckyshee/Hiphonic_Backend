@@ -3,8 +3,9 @@ POST http://localhost:5400/api/photos
 Content-Type: application/json
 
 {
-    "UserID": "3",
-    "PhotoURL": "https://bit.ly/48uIMRG",
+
+    "UserID": "2",
+    "PhotoURL": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=600",
     "UploadDate": "2024-01-15T08:00:00Z"
 }
 
