@@ -3,6 +3,7 @@ POST http://localhost:5400/api/photos
 Content-Type: application/json
 
 {
+
     "UserID": "2",
     "PhotoURL": "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=600",
     "UploadDate": "2024-01-15T08:00:00Z"
@@ -17,7 +18,7 @@ Content-Type: application/json
 
 ###
 # getting photos by user id
-GET http://localhost:5400/api/photos/yours/1
+GET http://localhost:5400/api/photos/yours/3
 Content-Type: application/json
 
 
@@ -44,4 +45,4 @@ Content-Type: application/json
 
 ###
 # delete a photos
-DELETE http://localhost:5400/api/photos/delete/6d7014dd-191f-44f7-a203-f54776520c56
+DELETE http://localhost:5400/api/photos/delete/6
