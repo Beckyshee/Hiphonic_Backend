@@ -14,6 +14,7 @@ import {
   updateFriendshipService,
   deleteFriendshipService,
   getFriendsOfAUserService,
+  deleteFriendshipByIDService,
 } from "../services/friendshipServices.js";
 import { getUserByIDService } from "../services/userService.js";
 
@@ -148,3 +149,21 @@ export const deleteFriendship = async (req, res) => {
     sendServerError(res, error.message);
   }
 };
+
+export const deleteFriendshipByID = async (req, res) => {
+  try {
+    console.log(req.params);
+    const User1ID = req.params.User1ID;
+    const User2ID = req.params.User2ID;
+    const isDeleted = await deleteFriendshipByIDService(User1ID, User2ID);
+
+    if (isDeleted) {
+      res.status(200).json({ message: "Friendship deleted successfully" });
+    } else {
+      res.status(404).json({ error: "Deletion failed" });
+    }
+  } catch (error) {
+    sendServerError(res, error.message);
+  }
+};
+

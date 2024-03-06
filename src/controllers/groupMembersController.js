@@ -51,7 +51,8 @@ export const removeGroupMember = async (req, res) => {
 export const getAllGroupMembers = async (req, res) => {
   try {
     const { GroupID } = req.params;
-    const members = await getAllGroupMembersService(GroupID);
+    const members = await getAllGroupMembersService( GroupID );
+    console.log("members one", members);
     return res.status(200).json(members);
   } catch (error) {
     sendServerError(res, error.message);

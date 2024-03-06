@@ -3,8 +3,8 @@ POST http://localhost:5400/api/posts
 Content-Type: application/json
 
 {
-    "UserID": "2",
-    "Content": "Oh happy day"
+    "UserID": "3",
+    "Content": "Its your bestie miss miss westie dont tryna mess me its gon get messy"
 }
 
 

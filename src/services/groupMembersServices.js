@@ -15,16 +15,15 @@ export const addGroupMemberService = async (groupMember) => {
 };
 
 export const removeGroupMemberService = async (GroupID, MemberID) => {
-  try
-  {
+  try {
     const result = await poolRequest()
-    .input("GroupID", sql.VarChar(255), GroupID)
-    .input("MemberID", sql.VarChar(255), MemberID)
-    .query(
-      "DELETE FROM GroupMembers WHERE GroupID = @GroupID AND MemberID = @MemberID"
+      .input("GroupID", sql.Int, GroupID)
+      .input("MemberID", sql.Int, MemberID)
+      .query(
+        "DELETE FROM GroupMembers WHERE GroupID = @GroupID AND MemberID = @MemberID"
       );
-      return result;
-      console.log(result);
+    return result;
+    console.log(result);
   } catch (error) {
     throw error;
   }
@@ -33,10 +32,23 @@ export const removeGroupMemberService = async (GroupID, MemberID) => {
 export const getAllGroupMembersService = async (GroupID) => {
   try {
     const result = await poolRequest()
-      .input("GroupID", sql.VarChar(255), GroupID)
-      .query("SELECT * FROM GroupMembers WHERE GroupID = @GroupID");
+      .input("GroupID", sql.Int, GroupID)
+      .query(
+        `SELECT 
+    tbl_user.UserID,
+    tbl_user.UserName,
+    GroupMembers.GroupID
+FROM 
+    GroupMembers
+INNER JOIN 
+    tbl_user ON tbl_user.UserID = GroupMembers.MemberID
+WHERE 
+    GroupMembers.GroupID = @GroupID;
+`
+      );
+    console.log("result", result);
     return result.recordset;
   } catch (error) {
-    throw error;
+    return error;
   }
 };

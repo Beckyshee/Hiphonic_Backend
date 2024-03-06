@@ -1,8 +1,8 @@
 import Joi from "joi";
 
 const groupMembersSchema = Joi.object({
-  GroupID: Joi.string().required(),
-  MemberID: Joi.string().required(),
+  GroupID: Joi.number().required(),
+  MemberID: Joi.number().required(),
 });
 
 export const groupMembersValidator = (groupMember) => {

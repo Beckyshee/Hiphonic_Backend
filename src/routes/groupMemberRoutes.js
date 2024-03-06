@@ -9,6 +9,6 @@ const groupMembersRouter = Router();
 
 groupMembersRouter.post("/", addGroupMember);
 groupMembersRouter.delete("/:GroupID/:MemberID", removeGroupMember);
-groupMembersRouter.get("/:GroupID/all", getAllGroupMembers);
-
+groupMembersRouter.get("/all/:GroupID", getAllGroupMembers);
+// groupMembersRouter.get("/all", getAllGroupMembers);
 export default groupMembersRouter;
