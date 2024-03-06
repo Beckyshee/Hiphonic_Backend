@@ -21,7 +21,7 @@ export const createNewPost = async (req, res) => {
   // Validate post data
   // const PostID = v4();
   try {
-    const { UserID, Content } = req.body;
+    const { UserID, Content, PostDate } = req.body;
     console.log(req.body);
     const { error } = postValidator({
       UserID,
@@ -35,6 +35,7 @@ export const createNewPost = async (req, res) => {
       // PostID,
       UserID,
       Content,
+      PostDate: new Date().toISOString(),
     };
     console.log("post", newPost);
     // Call service function to add post to the database

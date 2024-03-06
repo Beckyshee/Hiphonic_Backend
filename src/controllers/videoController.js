@@ -36,9 +36,9 @@ export const addVideo = async (req, res) => {
     }
 
     if (response.rowsAffected && response.rowsAffected[0] === 1) {
-      return res.status(201).json({ message: "Video added successfully" });
+      return res.status(201).send({ message: "Video added successfully" });
     } else {
-      return res.status(500).json({ error: "Failed to add video" });
+      return res.status(500).send({ error: "Failed to add video" });
     }
   } catch (error) {
     sendServerError(res, error.message);
