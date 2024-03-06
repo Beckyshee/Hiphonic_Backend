@@ -1,0 +1,39 @@
+### creating an event
+POST http://localhost:5400/api/eventattendees
+Content-Type: application/json
+
+{
+    "EventID": 2,
+    "AttendeeID": 1
+}
+
+
+### getting all events attended by a user
+GET http://localhost:5400/api/eventattendees/user/3
+Content-Type: application/json
+
+
+### ALl Users attending an event
+GET http://localhost:5400/api/eventattendees/1/all
+
+###
+# get all event attendees
+
+GET http://localhost:5400/api/eventattendees/1/all
+
+
+
+### updating an event attendance
+DELETE http://localhost:5400/api/eventattendees
+Content-Type: application/json
+
+{
+    "EventID": 1,
+    "AttendeeID": 3 
+}
+
+
+
+###
+# delete an event
+DELETE http://localhost:5400/api/eventattendees/1/2

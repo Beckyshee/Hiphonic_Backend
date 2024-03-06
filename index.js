@@ -21,8 +21,11 @@ import { WebSocketServer } from "ws";
 import cors from "cors";
 import videoRouter from "./src/routes/videoRoutes.js";
 
-import { createNewMessage, getMessageBySenderIDReceiverID } from "./src/controllers/messageController.js";
-
+import {
+  createNewMessage,
+  getMessageBySenderIDReceiverID,
+} from "./src/controllers/messageController.js";
+import notificationRouter from "./src/routes/notificationRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -33,16 +36,17 @@ var corsOptions = {
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
-
-const io = new Server({ 
-  cors:{
-      origin: "http://127.0.0.1:5173"
-  }
+const io = new Server({
+  cors: {
+    origin: "http://127.0.0.1:5173",
+  },
 });
-let onlineUsers =[];
-const username="Admin"
+let onlineUsers = [];
+const username = "Admin";
 const addNewUser = (username, socketId) => {
-  const existingUserIndex = onlineUsers.findIndex((user) => user.username === username);
+  const existingUserIndex = onlineUsers.findIndex(
+    (user) => user.username === username
+  );
 
   if (existingUserIndex !== -1) {
     onlineUsers[existingUserIndex].socketId = socketId;
@@ -51,7 +55,7 @@ const addNewUser = (username, socketId) => {
   }
   console.log("Online Users!!!:", onlineUsers); // Log online users after adding
 };
-console.log({onlineUsers})
+console.log({ onlineUsers });
 
 const removeUser = (socketId) => {
   onlineUsers = onlineUsers.filter((user) => user.socketId !== socketId);
@@ -80,16 +84,14 @@ io.on("connection", (socket) => {
       // Handle the case where the receiver is not found or not connected
     }
   });
-  
-
 
   // io.emit(" ", "Hello this its test")
   // console.log("someone is in the app!!!")
-  socket.on("disconnect", ()=>{
+  socket.on("disconnect", () => {
     removeUser(socket.id);
 
     console.log("someone has left the app");
-  })
+  });
 });
 
 // app.use( cors( {
@@ -142,33 +144,24 @@ app.use("/api/groupmembers", groupMembersRouter);
 app.use("/api/eventattendees", eventAttendeeRouter);
 app.use("/api/notifications", notificationRouter);
 
-
-
-const server = app.listen(
- port, () => {
-
+const server = app.listen(port, () => {
   logger.info(`Hiphonic running on http://localhost:${port} `);
-}
-)
-
+});
 
 const wss = new WebSocketServer({ server });
 
 wss.on("connection", (connection, req) => {
   console.log("WebSocket connected...");
 
-
   connection.on("message", (message) => {
-    console.log( `Received message: ${ message }` );
-    createNewMessage(message,wss.clients)
-  } );
+    console.log(`Received message: ${message}`);
+    createNewMessage(message, wss.clients);
+  });
 
-    connection.on("messageID", (ID) => {
-      console.log(`Received message: ${ID}`);
-      getMessageBySenderIDReceiverID(ID, wss.clients);
-    });
-
-  
+  connection.on("messageID", (ID) => {
+    console.log(`Received message: ${ID}`);
+    getMessageBySenderIDReceiverID(ID, wss.clients);
+  });
 
   // Listen for the connection to close
   connection.on("close", () => {
